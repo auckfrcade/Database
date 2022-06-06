@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        
+        
+        
+        <title>Database</title>
+    </head>
+    <body>
+        <%- include ('templates/header.ejs') -%> 
+        
+        <div class="">
+            <h1 class="text-center mt-3 mb-3"><%= title %></h1>
+            
+            <% if(action == 'add') { %>
+
+                <% } else { %>
+                
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col">Defects Pictures Wales</div>
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for description..">
+                        <div class="col"></div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="myTable">
+                            <thread>
+                            <tr>
+                                <th>CARRSAssetUID</th>
+                                <th>NR_Route</th>
+                                <th>ELR</th>
+                                <th>Miles</th>
+                                <th>Chains</th>
+                                <th>Yards</th>
+                                <th>Defect_Index</th>
+                                <th>Risk_Score</th>
+                                
+                                <th>Description</th>
+                                <th>Location</th>
+                                <th>Filename</th>
+                                <th>path</th>
+                            </tr>
+                            </thread>
+                            <%
+                            if(sampleData.length > 0)
+                            {
+                                sampleData.forEach(function(data){
+                            %>
+                            <tbody>
+                            <tr>
+                                <td><%= data.CARRSAssetUID %></td>
+                                <td><%= data.NR_Route %></td>
+                                <td><%= data.ELR %></td>
+                                <td><%= data.Miles %></td>
+                                <td><%= data.Chains %></td>
+                                <td><%= data.Yards %></td>
+                                <td><%= data.Defect_Index %></td>
+                                <td><%= data.Risk_Score %></td>
+                                
+                                <td><%= data.Description %></td>
+                                <td><%= data.Location %></td>
+                                <td><%= data.Filename %></td>
+                                <td><%= data.path %></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                            <%
+                                });
+                            }
+                            else
+                            {
+                            %>
+                            <tr>
+                                <td colspan="5">No Data Found</td>
+                            </tr>
+                            <%
+                            }
+                            %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <% } %>
+
+        </div> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td") [11];
+    
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+
+   
+
+    </body>
+</html>
