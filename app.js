@@ -24,10 +24,10 @@ app.use(cookieParser());
 
 
 
-app.use('/welsh_data/', indexRouter);
-app.use('/welsh_data/users', usersRouter);
-app.use('/welsh_data/sample_data', sampledataRouter);
-app.use('/welsh_data/detailpage', detailpageRouter);
+app.use('/Welsh_data/', indexRouter);
+app.use('/Welsh_data/users', usersRouter);
+app.use('/Welsh_data/sample_data', sampledataRouter);
+app.use('/Welsh_data/detailpage', detailpageRouter);
 app.use(express.static('public'));
 
 
