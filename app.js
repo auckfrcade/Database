@@ -28,7 +28,7 @@ app.use('/Welsh_data/', indexRouter);
 app.use('/Welsh_data/users', usersRouter);
 app.use('/Welsh_data/sample_data', sampledataRouter);
 app.use('/Welsh_data/detailpage', detailpageRouter);
-app.use(express.static('public'));
+app.use("/Welsh_data/", express.static('public'));
 
 
 // catch 404 and forward to error handler
